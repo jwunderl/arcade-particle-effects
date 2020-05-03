@@ -7,8 +7,7 @@
     },
     "files": [
         "README.md",
-        "main.blocks",
-        "main.ts"
+        "extra-effects.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -17,5 +16,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
