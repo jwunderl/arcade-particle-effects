@@ -83,10 +83,15 @@ namespace extraeffects {
     //% fixedInstance whenUsed block="colored trail"
     export const coloredTrail = new effects.ParticleEffect(
         60,
-        2000,
+        200,
         (anchor, pps) => {
             const factory = new ColorTrailFactory(anchor);
             const src = new particles.ParticleSource(anchor, pps, factory);
+
+            const length = Math.sqrt(anchor.vx**2 + anchor.vy**2);
+            const ax = anchor.vx / length * 100;
+            const ay = anchor.vy / length * 100;
+            src.setAcceleration(ax, ay);
             return src;
         }
     )
