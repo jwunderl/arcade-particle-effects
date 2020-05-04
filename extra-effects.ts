@@ -96,7 +96,6 @@ namespace extraeffects {
         }
     )
 
-
     function createEffect(
         defaultParticlesPerSecond: number,
         defaultLifespan: number,
@@ -107,4 +106,22 @@ namespace extraeffects {
                 new particles.ParticleSource(anchor, pps, factoryFactory()));
     }
 
+    class MatchAccelerationSource extends particles.ParticleSource {
+        constructor(anchor: Sprite, particlesPerSecond: number, factory?: particles.ParticleFactory) {
+            super(anchor, particlesPerSecond, factory);
+
+            this.matchAcceleration();
+        }
+
+        matchAcceleration() {
+            const s = this.anchor as Sprite;
+            this.ax = s._ax;
+            this.ay = s._ay;
+        }
+
+        _update(dt: number) {
+            this.matchAcceleration();
+            super._update(dt);
+        }
+    }
 }
